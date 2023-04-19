@@ -60,12 +60,14 @@ function addToCartClicked(event) {
 }
 
 function addItemToCart(title, price, imageSrc) {
+    // Abro el details para que funcione el código
     var isOpen = document.getElementsByClassName('cart-details')[0]
     if (isOpen.open === 'False') {
         isOpen.open = 'True'
     }
     document.getElementsByClassName('cart-details')[0].open = 'True'
-    
+
+    // Crea la fila completa y la agrega al html
     var cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
     var cartItems = document.getElementsByClassName('cart-items')[0]
