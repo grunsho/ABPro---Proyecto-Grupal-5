@@ -59,7 +59,7 @@ function addToCartClicked(event) {
     updateCartTotal()
 }
 
-function addItemToCart(title, price, imageSrc) {
+function addItemToCart(title, price, subtotal, imageSrc) {
     // Abro el details para que funcione el código
     var isOpen = document.getElementsByClassName('cart-details')[0]
     if (isOpen.open === 'False') {
@@ -86,8 +86,9 @@ function addItemToCart(title, price, imageSrc) {
         <span class="cart-price cart-column">${price}</span>
         <div class="cart-quantity cart-column">
             <input class="cart-quantity-input" type="number" value="1">
-            <button class="btn btn-danger" type="button">REMOVE</button>
-        </div>`
+            <button class="btn btn-danger" type="button">Eliminar</button>
+        </div>
+        <span class="cart-price cart-column">${subtotal}</span>`
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
@@ -102,6 +103,7 @@ function updateCartTotal() {
         var cartRow = cartRows[i]
         var priceElement = cartRow.getElementsByClassName('cart-price')[0]
         var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
+        var subtotal = parseInt(quantityElement.value) * parseInt(priceElement.innerText)
         var price = parseFloat(priceElement.innerText.replace('$', ''))
         var quantity = quantityElement.value
         total = total + (price * quantity)

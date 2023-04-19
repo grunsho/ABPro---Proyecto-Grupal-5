@@ -13,7 +13,7 @@ form.addEventListener('submit', function(event) {
 
 if (username === 'user' &&  password === 'hola.123') {
     // Las credenciales son correctas, redirigir al usuario a la página principal
-    location.href = '../../index.html';
+    location.href = 'index.html';
 } else {
     // Las credenciales son incorrectas, limpiar el formulario y permitir un nuevo intento
     form.reset();
