@@ -1,3 +1,4 @@
+// CARRITO DE COMPRAS
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 } else {
@@ -27,12 +28,13 @@ function ready() {
 }
 
 function purchaseClicked() {
-    alert('¡Muchas grcias por su compra!')
+    alert('¡Muchas gracias por su compra! Ahora será redirigido(a) a la página de Despacho')
     var cartItems = document.getElementsByClassName('cart-items')[0]
     while (cartItems.hasChildNodes()) {
         cartItems.removeChild(cartItems.firstChild)
     }
     updateCartTotal()
+    window.location.href = "despacho.html"
 }
 
 function removeCartItem(event) {
@@ -59,7 +61,7 @@ function addToCartClicked(event) {
     updateCartTotal()
 }
 
-function addItemToCart(title, price, subtotal, imageSrc) {
+function addItemToCart(title, price, imageSrc) {
     // Abro el details para que funcione el código
     var isOpen = document.getElementsByClassName('cart-details')[0]
     if (isOpen.open === 'False') {
@@ -87,8 +89,7 @@ function addItemToCart(title, price, subtotal, imageSrc) {
         <div class="cart-quantity cart-column">
             <input class="cart-quantity-input" type="number" value="1">
             <button class="btn btn-danger" type="button">Eliminar</button>
-        </div>
-        <span class="cart-price cart-column">${subtotal}</span>`
+        </div>`
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
